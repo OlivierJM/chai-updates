@@ -2,7 +2,7 @@ import React from 'react'
 import { withTracker } from 'meteor/react-meteor-data'
 import Posts from '../api/posts/posts'
 
-function Post() {
+function Post(props) {
     const posts = props.posts.map(
       post => makepost(post)
     )
