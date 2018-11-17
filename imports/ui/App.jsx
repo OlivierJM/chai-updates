@@ -1,6 +1,6 @@
 import React from 'react'
 import Updates from './Updates.jsx'
-import CreatePost from './dashboard/Post'
+import CreatePost from './dashboard/CreatePost'
 import Post from './Post'
 
 const App = () => (
@@ -13,6 +13,6 @@ const App = () => (
     </h6>
     <Post />
   </div>
-);
+)
 
-export default App;
+export default App
