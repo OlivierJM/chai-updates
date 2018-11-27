@@ -4,8 +4,7 @@ import { Layout, Menu } from "antd";
 const { Header } = Layout;
 
 
-const AdminWrapper = props => (
-    <Layout>
+const DashboardHeader = () => (
         <Header className="header">
           <div className="logo" />
           <Menu
@@ -19,10 +18,6 @@ const AdminWrapper = props => (
             <Menu.Item key="3">nav 3</Menu.Item>
           </Menu>
         </Header>
-            {
-                props.children
-            }
-      </Layout>
 )
 
-export default AdminWrapper
+export default DashboardHeader
