@@ -87,7 +87,6 @@ export class FileUploadComponent extends Component {
 
         uploadInstance.start(); // Must manually start the upload
       }
-      // }
     );
   };
 
@@ -130,6 +129,7 @@ export class FileUploadComponent extends Component {
 
   render() {
     const { files, progress, files_size, uploaded } = this.state;
+    console.log(this.props.link)
     files.length <= 1 ? (name = 'file') : (name = 'files');
     return (
       <div>
@@ -184,6 +184,7 @@ export default withTracker(props => {
   const docsReadyYet = filesHandle.ready();
   return {
     docsReadyYet,
+    link: Leaders.find().count() ? Leaders.findOne().link() : []
   };
 })(FileUploadComponent);
 
