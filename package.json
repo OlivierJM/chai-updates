@@ -9,7 +9,8 @@
     "gridfs-stream": "^1.1.1",
     "meteor-node-stubs": "^0.4.1",
     "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0"
+    "react-dom": "^16.7.0-alpha.0",
+    "underscore": "^1.9.1"
   },
   "meteor": {
     "mainModule": {
