@@ -1,7 +1,8 @@
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import Leaders from '../../../api/leaders/leaders'
+import _ from 'underscore'
+import { Leaders } from '../../../api/leaders/leaders'
 
 export class FileUploadComponent extends Component {
   constructor(props) {

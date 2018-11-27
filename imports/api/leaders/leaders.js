@@ -11,7 +11,7 @@ if (Meteor.isServer) {
 
 const validTypes = ['png', 'jpg', 'jpeg'];
 
-export const leaders = new FilesCollection({
+export const Leaders = new FilesCollection({
   collectionName: 'leaders',
   allowClientCode: true, // Disallow remove files from Client
   onBeforeUpload(file) {
@@ -73,5 +73,5 @@ export const leaders = new FilesCollection({
 });
 
 if (Meteor.isServer) {
-  leaders.allowClient();
+  Leaders.allowClient();
 }
