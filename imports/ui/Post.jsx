@@ -27,6 +27,7 @@ function Post(props) {
 
 export default PostContainer = withTracker(() => {
   Meteor.subscribe('posts')
+  Meteor.subscribe('users')
   return {
     posts: Posts.find().fetch(),
   }
