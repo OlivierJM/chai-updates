@@ -3,12 +3,15 @@ import Updates from './Updates.jsx'
 import CreatePost from './dashboard/CreatePost'
 import FileUpload from './dashboard/leads/Upload'
 
+// prototyping
+import DashboardMain from './dashboard/DashboardMain'
 
 import Post from './Post'
 
 const App = () => (
   <div>
-    <h1>Welcome to Me!</h1>
+    <DashboardMain />
+    <br />
     <Updates />
       <CreatePost />
       <br />
