@@ -1,4 +1,4 @@
-import { MongoInternals } from 'meteor/mongo';
+import { Mongo, MongoInternals } from 'meteor/mongo';
 import { FilesCollection } from 'meteor/ostrio:files';
 import Grid from 'gridfs-stream';
 
