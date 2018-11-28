@@ -6,7 +6,7 @@ const { Header } = Layout;
 
 
 const DashboardHeader = () => (
-        <Header className="header">
+        <Header className="header" style={{marginTop: -10}}>
           <div className="logo" />
           <Menu
             theme="dark"
