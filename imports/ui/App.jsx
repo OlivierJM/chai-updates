@@ -20,7 +20,7 @@ const App = () => (
 
       <Route exact path="/updates" component={Updates} />
       <Route path="/post" component={CreatePost} />
-      <Route path="/posts" component={CreatePost} />
+      <Route path="/posts" component={Post} />
       <Route path="/upload" component={FileUpload} />
     </div>
   </Router>
