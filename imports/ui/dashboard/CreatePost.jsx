@@ -12,7 +12,7 @@ function createPost() {
 
   function handleCreatePost(e) {
     e.preventDefault();
-    Meteor.call("createPost", title.value, content.value, link.value);
+    Meteor.call("createPost", title.value, content.value, link.value, type);
   }
   function handleChange(value){
     setType(value)
