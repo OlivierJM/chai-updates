@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import _ from 'underscore'
-import { Leaders } from '../../../api/leaders/leaders'
+import { Leaders, Images } from '../../../api/leaders/leaders'
 
 export class FileUploadComponent extends Component {
   constructor(props) {
@@ -84,6 +84,7 @@ export class FileUploadComponent extends Component {
         uploadInstance.on('end', function(error, fileObj) {
           console.log('ended upload');
           // call a meteor method
+
         });
 
         uploadInstance.on('uploaded', (error, fileObj) => {

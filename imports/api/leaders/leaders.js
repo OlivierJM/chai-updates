@@ -10,7 +10,14 @@ import { FilesCollection } from 'meteor/ostrio:files';
 // }
 
 // const validTypes = ['png', 'jpg', 'jpeg'];
-export const Leaders = new FilesCollection({collectionName: 'leaders' })
+export const Leaders = new FilesCollection({
+    collectionName: 'leaders',
+    storagePath: '/public/uploads/leaders',
+ })
+export const Images = new FilesCollection({
+    collectionName: 'images',
+    storagePath: '/public/uploads/images',
+ })
 // export const Leaders = new FilesCollection({
 //   collectionName: 'leaders',
 //   allowClientCode: true, // Disallow remove files from Client
