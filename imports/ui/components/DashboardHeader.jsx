@@ -1,25 +1,35 @@
-import React from 'react'
-import { Layout, Menu } from "antd";
-import { Link } from 'react-router-dom'
-
-const { Header } = Layout;
-
+import React from "react";
+import { Link } from "react-router-dom";
 
 const DashboardHeader = () => (
-        <Header className="header" style={{marginTop: -10}}>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={["2"]}
-            style={{ lineHeight: "64px" }}
-          >
-            <Menu.Item key="1"><Link to='/post'>Create Post</Link></Menu.Item>
-            <Menu.Item key="2"><Link to='/updates'>Updates</Link></Menu.Item>
-            <Menu.Item key="3"><Link to='/upload'>Upload</Link></Menu.Item>
-            <Menu.Item key="4"><Link to='/posts'>Posts</Link></Menu.Item>
-          </Menu>
-        </Header>
-)
+  <nav className="border">
+    <div className="collapsible">
+      <input id="collapsible2" type="checkbox" name="collapsible2" />
+      <button>
+        <label htmlFor="collapsible2">
+          <div className="bar1" />
+          <div className="bar2" />
+          <div className="bar3" />
+        </label>
+      </button>
+      <div className="collapsible-body">
+        <ul className="inline">
+          <li>
+            <Link to="/post">Create Post</Link>
+          </li>
+          <li>
+            <Link to="/updates">Updates</Link>
+          </li>
+          <li>
+            <Link to="/upload">Upload</Link>
+          </li>
+          <li>
+            <Link to="/posts">Posts</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+);
 
-export default DashboardHeader
+export default DashboardHeader;

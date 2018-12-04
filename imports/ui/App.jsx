@@ -1,7 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import { Layout } from 'antd'
 
 import Updates from './Updates.jsx'
 import CreatePost from './dashboard/CreatePost'
@@ -17,14 +15,14 @@ import Post from './Post'
 
 const App = () => (
   <Router>
-    <Layout>
+    <Fragment>
       <Header />
 
       <Route exact path="/updates" component={Updates} />
       <Route path="/post" component={CreatePost} />
       <Route path="/posts" component={Post} />
       <Route path="/upload" component={FileUpload} />
-    </Layout>
+    </Fragment>
   </Router>
 )
 

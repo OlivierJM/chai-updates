@@ -10,14 +10,17 @@ import Posts from './posts'
  */
 
  Meteor.methods({
-     createPost(title, content, link){
+     createPost(title, content, link, type){
         check(title, String)
         check(content, String)
         check(link, String)
+        check(type, String)
         Posts.insert({
             title, 
             content,
-            link
+            link,
+            type,
+            createdAt: new Date()
         }, err => err ? console.log(err.reason) : console.log('created the post'))
      },
      removePost(_id){

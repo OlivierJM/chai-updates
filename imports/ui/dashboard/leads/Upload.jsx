@@ -96,19 +96,11 @@ export class FileUploadComponent extends Component {
         <div>
           {this.state.uploading.file.name}
 
-          <div className="progress">
-            <div
-              style={{ width: this.state.progress + '%' }}
-              aria-valuemax="100"
-              aria-valuemin="0"
-              aria-valuenow={this.state.progress || 0}
-              role="progressbar"
-              className="determinate"
-            >
+              <div className="progress margin-bottom">
+                <div className={`bar w-${this.state.progress}`}></div>
+              </div>
               <span className="sr-only">{this.state.progress}% Complete (success)</span>
               <span>{this.state.progress}%</span>
-            </div>
-          </div>
         </div>
       );
     }
@@ -137,7 +129,7 @@ export class FileUploadComponent extends Component {
           <div className="col s12">
             <form onSubmit={this.uploadIt}>
               <div className="file-field input-field">
-                <div className="btn" style={{backgroundColor: '#006b76'}}>
+                <div className="btn">
                   <span>
                     {files.length >= 1
                       ? `${files.length} ${name} selected (${files_size})`
@@ -152,16 +144,8 @@ export class FileUploadComponent extends Component {
                     onChange={this.getFiles}
                   />
                 </div>
-
-                <div className="file-path-wrapper">
-                  <input
-                    className="file-path validate"
-                    type="text"
-                    placeholder="Upload one or more files eg: mp4, pdf, png, mp3, jpg"
-                  />
-                </div>
               </div>
-              <button role="submit" className="btn fa fa-upload" style={{ marginLeft: '42%',backgroundColor: '#006b76' }}>
+              <button role="submit" className="btn fa fa-upload" >
                 {uploaded ? ' Done Uploading' : ' Upload'}
               </button>
             </form>
