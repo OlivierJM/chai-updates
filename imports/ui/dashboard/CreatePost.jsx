@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Meteor } from "meteor/meteor"
+import { Session } from 'meteor/session'
+import UploadImage from './leads/Upload'
 
 function createPost() {
   const title = useFormValues("title")
@@ -9,12 +11,13 @@ function createPost() {
 
   function handleCreatePost(e) {
     e.preventDefault();
-    Meteor.call("createPost", title.value, content.value, link.value, type);
+     Meteor.call("createPost", title.value, content.value, link.value, type);
   }
   function handleChange(event){
     setType(event.target.value)
   }
   return (
+    <>
     <form onSubmit={handleCreatePost}>
       <input {...title} />
       <br />
@@ -24,14 +27,16 @@ function createPost() {
       <br />
       <div className="form-group">
         <select id="paperSelects1" defaultValue={type} onChange={handleChange}>
-          <option value="1">Video</option>
-          <option value="2">Image</option>
+          <option value="video">Video</option>
+          <option value="image">Image</option>
         </select>
       </div>
       <button className="btn" role="submit">
-        submit
+        Save
       </button>
     </form>
+      <UploadImage title={title} content={content} link={link} />
+    </>
   );
 }
 

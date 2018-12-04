@@ -17,28 +17,47 @@ export class FileUploadComponent extends Component {
       uploaded: false,
     };
   }
-
   componentDidMount(){
-    console.log(this.props.match.path)
+    console.log(this.props.match.path.includes('post'))
   }
 
   uploadIt = e => {
     e.preventDefault();
     const { files } = this.state;
-    const { match: { path } } = this.props
+    const { match: { path }, title, link, content } = this.props
+
     _.each(files, file => {
       let uploadInstance;
       if (file) {
-        switch (path) {
-          case path.includes('upload'):
-            uploadInstance = Leaders.insert(
+        if(path.includes('upload')){
+          uploadInstance = Leaders.insert(
+            {
+              file: file,
+              meta: {
+                locator: this.props.fileLocator,
+                userId: Meteor.userId(), // Optional, used to check on server for file tampering
+                department: '',
+                age: '',
+                createdAt: new Date(),
+              },
+              streams: 'dynamic',
+              chunkSize: 'dynamic',
+              allowWebWorkers: true, // If you see issues with uploads, change self to false
+            },
+            false,
+            );
+          }
+          if (path.includes('post')) {
+            console.log(path)
+            uploadInstance = Images.insert(
               {
                 file: file,
                 meta: {
                   locator: this.props.fileLocator,
                   userId: Meteor.userId(), // Optional, used to check on server for file tampering
-                  department: '',
-                  age: '',
+                  title,
+                  content,
+                  link,
                   createdAt: new Date(),
                 },
                 streams: 'dynamic',
@@ -48,34 +67,12 @@ export class FileUploadComponent extends Component {
               false,
             );
             
-            break;
-            case path.includes('post'):
-                uploadInstance = Images.insert(
-                  {
-                    file: file,
-                    meta: {
-                      locator: this.props.fileLocator,
-                      userId: Meteor.userId(), // Optional, used to check on server for file tampering
-                      createdAt: new Date(),
-                    },
-                    streams: 'dynamic',
-                    chunkSize: 'dynamic',
-                    allowWebWorkers: true, // If you see issues with uploads, change self to false
-                  },
-                  false,
-                );
-
-          break;
-          default:
-            break;
-        }
-        }
-
-        this.setState({
-          uploading: uploadInstance, // Keep track of self instance to use below
-          inProgress: true, // Show the progress bar now
-        });
-
+          }
+            this.setState({
+              // uploading: uploadInstance, // Keep track of self instance to use below
+              inProgress: true, // Show the progress bar now
+            });
+            
         // These are the event functions on the progress of the upload
         uploadInstance.on('start', function() {
           console.log('Starting');
@@ -117,6 +114,7 @@ export class FileUploadComponent extends Component {
         });
         uploadInstance.start(); // Must manually start the upload
       }
+      }
     );
   };
 
@@ -151,7 +149,6 @@ export class FileUploadComponent extends Component {
 
   render() {
     const { files, progress, files_size, uploaded } = this.state;
-    console.log(this.props.link)
     files.length <= 1 ? (name = 'file') : (name = 'files');
     return (
       <div>
