@@ -9,7 +9,7 @@ function Post(props) {
     )
     return (
       <div>
-        <table>
+        <table className='table-hover'>
           <thead>
             <tr>
               <th>Title</th>
