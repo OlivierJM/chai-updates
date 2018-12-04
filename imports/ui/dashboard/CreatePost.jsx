@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";
-import { Select } from "antd";
-
-const Option = Select.Option;
 
 function createPost() {
   const title = useFormValues("title");
@@ -25,15 +22,11 @@ function createPost() {
       <br />
       <input {...link} />
       <br />
-      <div>
-        <Select
-          value={type}
-          style={{ width: 120 }}
-          onChange={handleChange}
-        >
-          <Option value="video">Video</Option>
-          <Option value="image">Image</Option>
-        </Select>
+      <div className="form-group">
+        <select id="paperSelects1" defaultValue={type} onChange={handleChange}>
+          <option value="1">Video</option>
+          <option value="2">Image</option>
+        </select>
       </div>
       <button className="btn" role="submit">
         submit
