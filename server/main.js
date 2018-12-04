@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor'
+import { Accounts } from 'meteor/accounts-base'
 import '../imports/api/posts/methods';
 import '../imports/api/posts/publication';
 import '../imports/api/posts/posts';
@@ -8,3 +10,12 @@ import '../imports/api/departments/methods'
 import '../imports/api/leaders/publication'
 import '../imports/api/leaders/methods'
 import '../imports/api/leaders/leaders'
+
+const user = {
+    username: 'admin',
+    password: 'chainama',
+    profile: { name: 'communication' }
+}
+Meteor.startup(() => {
+    Meteor.users.find().count() === 0 && Accounts.createUser(user)
+})
