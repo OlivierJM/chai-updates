@@ -1,6 +1,7 @@
-import { withTracker } from 'meteor/react-meteor-data';
+// import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import _ from 'underscore'
 import { Leaders } from '../../../api/leaders/leaders'
 
@@ -17,13 +18,19 @@ export class FileUploadComponent extends Component {
     };
   }
 
+  componentDidMount(){
+    console.log(this.props.match.path)
+  }
+
   uploadIt = e => {
     e.preventDefault();
     const { files } = this.state;
-
+    const { match: { path } } = this.props
     _.each(files, file => {
       let uploadInstance;
       if (file) {
+        switch (path) {
+          case path.includes('upload'):
             uploadInstance = Leaders.insert(
               {
                 file: file,
@@ -40,6 +47,28 @@ export class FileUploadComponent extends Component {
               },
               false,
             );
+            
+            break;
+            case path.includes('post'):
+                uploadInstance = Images.insert(
+                  {
+                    file: file,
+                    meta: {
+                      locator: this.props.fileLocator,
+                      userId: Meteor.userId(), // Optional, used to check on server for file tampering
+                      createdAt: new Date(),
+                    },
+                    streams: 'dynamic',
+                    chunkSize: 'dynamic',
+                    allowWebWorkers: true, // If you see issues with uploads, change self to false
+                  },
+                  false,
+                );
+
+          break;
+          default:
+            break;
+        }
         }
 
         this.setState({
@@ -54,6 +83,7 @@ export class FileUploadComponent extends Component {
 
         uploadInstance.on('end', function(error, fileObj) {
           console.log('ended upload');
+          // call a meteor method
         });
 
         uploadInstance.on('uploaded', (error, fileObj) => {
@@ -84,7 +114,6 @@ export class FileUploadComponent extends Component {
             progress: progress,
           });
         });
-
         uploadInstance.start(); // Must manually start the upload
       }
     );
@@ -160,17 +189,8 @@ export class FileUploadComponent extends Component {
     );
   }
 }
-// This is the HOC - included in this file just for convenience, but usually kept
-// in a separate file to provide separation of concerns.
-//
-export default withTracker(props => {
-  const filesHandle = Meteor.subscribe('leaders');
-  const docsReadyYet = filesHandle.ready();
-  return {
-    docsReadyYet,
-    link: Leaders.find().count() ? Leaders.findOne().link() : []
-  };
-})(FileUploadComponent);
+
+export default withRouter(FileUploadComponent)
 
 /**
  *
