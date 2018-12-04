@@ -9,16 +9,12 @@ function createPost() {
   const link = useFormValues("link")
   const [type, setType ] = useState('image')
 
-  function handleCreatePost(e) {
-    e.preventDefault();
-     Meteor.call("createPost", title.value, content.value, link.value, type);
-  }
   function handleChange(event){
     setType(event.target.value)
   }
   return (
     <>
-    <form onSubmit={handleCreatePost}>
+    <form>
       <input {...title} />
       <br />
       <input {...content} />
@@ -31,11 +27,8 @@ function createPost() {
           <option value="image">Image</option>
         </select>
       </div>
-      <button className="btn" role="submit">
-        Save
-      </button>
     </form>
-      <UploadImage title={title} content={content} link={link} />
+      <UploadImage title={title.value} content={content.value} link={link.value} />
     </>
   );
 }
