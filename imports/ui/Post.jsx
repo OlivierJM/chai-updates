@@ -9,18 +9,28 @@ function Post(props) {
     )
     return (
       <div>
-        <ul>{ posts }</ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Content</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+              { posts }
+          </tbody>
+        </table>
       </div>
     )
     
     function makepost(post) {
       return (
-        <li key={post._id}>
-        <a href={post.link} target="_blank">{post.title}</a>{'  '}
-        <span>
-          {post.content}
-        </span>
-      </li>
+             <tr key={post._id}>
+              <td>{post.title}</td>
+              <td>{post.content}</td>
+              <td>{post.link}</td>
+            </tr>
     )
   }
 }
