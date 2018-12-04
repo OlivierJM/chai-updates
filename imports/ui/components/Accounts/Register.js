@@ -48,7 +48,6 @@ function Register(props) {
       <div className="col s4 " style={{ paddingTop: 30, margin: 0 }}>
         <div className="card">
           <div className="row">
-            <div className="col s12 center-align"> Register the {props.role}</div>
             <form className="col s12" onSubmit={handleRegister}>
               <div className="row">
                 <div className="input-field col s10" style={{ marginLeft: 15 }}>
