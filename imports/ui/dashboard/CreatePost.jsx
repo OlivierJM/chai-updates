@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Meteor } from "meteor/meteor";
+import { Meteor } from "meteor/meteor"
 
 function createPost() {
-  const title = useFormValues("title");
-  const content = useFormValues("content");
-  const link = useFormValues("link");
+  const title = useFormValues("title")
+  const content = useFormValues("content")
+  const link = useFormValues("link")
   const [type, setType ] = useState('image')
 
   function handleCreatePost(e) {
     e.preventDefault();
     Meteor.call("createPost", title.value, content.value, link.value, type);
   }
-  function handleChange(value){
-    setType(value)
+  function handleChange(event){
+    setType(event.target.value)
   }
   return (
     <form onSubmit={handleCreatePost}>
