@@ -38,6 +38,7 @@ function Post(props) {
 export default PostContainer = withTracker(() => {
   Meteor.subscribe('posts')
   Meteor.subscribe('users')
+  Meteor.subscribe('images')
   return {
     posts: Posts.find().fetch(),
   }

@@ -5,6 +5,11 @@ import Updates from './Updates.jsx'
 import CreatePost from './dashboard/CreatePost'
 import FileUpload from './dashboard/leads/Upload'
 
+// accounts
+
+import Register from './components/Accounts/Register'
+import Login from './components/Accounts/Login'
+
 // prototyping
 // import DashboardMain from './dashboard/DashboardMain'
 import Header from './components/DashboardHeader'
@@ -22,6 +27,11 @@ const App = () => (
       <Route path="/post" component={CreatePost} />
       <Route path="/posts" component={Post} />
       <Route path="/upload" component={FileUpload} />
+      {/* // account */}
+
+      <Route path="/register" component={Register} />
+      <Route path="/login" component={Login} />
+
     </Fragment>
   </Router>
 )

@@ -1,8 +1,9 @@
-import { withTracker } from 'meteor/react-meteor-data';
+// import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import _ from 'underscore'
-import { Leaders } from '../../../api/leaders/leaders'
+import { Leaders, Images } from '../../../api/leaders/leaders'
 
 export class FileUploadComponent extends Component {
   constructor(props) {
@@ -16,22 +17,47 @@ export class FileUploadComponent extends Component {
       uploaded: false,
     };
   }
+  componentDidMount(){
+    console.log(this.props.match.path.includes('post'))
+  }
 
   uploadIt = e => {
     e.preventDefault();
     const { files } = this.state;
+    const { match: { path }, title, link, content } = this.props
 
     _.each(files, file => {
       let uploadInstance;
       if (file) {
-            uploadInstance = Leaders.insert(
+        if(path.includes('upload')){
+          uploadInstance = Leaders.insert(
+            {
+              file: file,
+              meta: {
+                locator: this.props.fileLocator,
+                userId: Meteor.userId(), // Optional, used to check on server for file tampering
+                department: '',
+                age: '',
+                createdAt: new Date(),
+              },
+              streams: 'dynamic',
+              chunkSize: 'dynamic',
+              allowWebWorkers: true, // If you see issues with uploads, change self to false
+            },
+            false,
+            );
+          }
+          if (path.includes('post')) {
+            console.log(path)
+            uploadInstance = Images.insert(
               {
                 file: file,
                 meta: {
                   locator: this.props.fileLocator,
                   userId: Meteor.userId(), // Optional, used to check on server for file tampering
-                  department: '',
-                  age: '',
+                  title,
+                  content,
+                  link,
                   createdAt: new Date(),
                 },
                 streams: 'dynamic',
@@ -40,13 +66,13 @@ export class FileUploadComponent extends Component {
               },
               false,
             );
-        }
-
-        this.setState({
-          uploading: uploadInstance, // Keep track of self instance to use below
-          inProgress: true, // Show the progress bar now
-        });
-
+            
+          }
+            this.setState({
+              // uploading: uploadInstance, // Keep track of self instance to use below
+              inProgress: true, // Show the progress bar now
+            });
+            
         // These are the event functions on the progress of the upload
         uploadInstance.on('start', function() {
           console.log('Starting');
@@ -54,6 +80,8 @@ export class FileUploadComponent extends Component {
 
         uploadInstance.on('end', function(error, fileObj) {
           console.log('ended upload');
+          // call a meteor method
+
         });
 
         uploadInstance.on('uploaded', (error, fileObj) => {
@@ -84,8 +112,8 @@ export class FileUploadComponent extends Component {
             progress: progress,
           });
         });
-
         uploadInstance.start(); // Must manually start the upload
+      }
       }
     );
   };
@@ -121,7 +149,6 @@ export class FileUploadComponent extends Component {
 
   render() {
     const { files, progress, files_size, uploaded } = this.state;
-    console.log(this.props.link)
     files.length <= 1 ? (name = 'file') : (name = 'files');
     return (
       <div>
@@ -160,17 +187,8 @@ export class FileUploadComponent extends Component {
     );
   }
 }
-// This is the HOC - included in this file just for convenience, but usually kept
-// in a separate file to provide separation of concerns.
-//
-export default withTracker(props => {
-  const filesHandle = Meteor.subscribe('leaders');
-  const docsReadyYet = filesHandle.ready();
-  return {
-    docsReadyYet,
-    link: Leaders.find().count() ? Leaders.findOne().link() : []
-  };
-})(FileUploadComponent);
+
+export default withRouter(FileUploadComponent)
 
 /**
  *
