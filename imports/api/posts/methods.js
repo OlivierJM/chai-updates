@@ -19,7 +19,8 @@ import Posts from './posts'
             title, 
             content,
             link,
-            type
+            type,
+            createdAt: new Date()
         }, err => err ? console.log(err.reason) : console.log('created the post'))
      },
      removePost(_id){
