@@ -14,7 +14,7 @@ function Register(props) {
     const {error, setError} = useError('')
     const [isAuth, setAuth] = useState(false)
     const { location: { pathname } } = props
-    
+
     function handleRegister(e){
       e.preventDefault()
       if (!gender.value.length) {
@@ -41,7 +41,7 @@ function Register(props) {
     }
   if(isAuth){
     return <Redirect to='/' />
-  }  
+  }
   return (
     <div className="row flex-center">
       <div className="col s4" />
@@ -83,6 +83,16 @@ function Register(props) {
                     required
                   />
                   <label htmlFor="number">Age</label>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="input-field col s10" style={{ marginLeft: 15 }}>
+                  <select className="validate" id="gender" name="gender" {...gender}>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                  </select>
+                  <label htmlFor="gender">Gender</label>
                 </div>
               </div>
 
