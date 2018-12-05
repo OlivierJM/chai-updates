@@ -40,7 +40,7 @@ function Register(props) {
         Accounts.createUser(user, err => err ? setError(err.reason) : setAuth(true) )
     }
   if(isAuth){
-    return <Redirect to='/' />
+    return <Redirect to='/post' />
   }  
   return (
     <div className="row flex-center">
