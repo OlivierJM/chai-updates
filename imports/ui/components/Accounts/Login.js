@@ -19,7 +19,7 @@ function Login() {
     }
     // 
   if(isAuth){
-    return <Redirect to='/' />
+    return <Redirect to='/post' />
   }  
   return (
     <div className="row flex-center">

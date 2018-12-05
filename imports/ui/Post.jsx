@@ -1,6 +1,7 @@
 import React from 'react'
 import { withTracker } from 'meteor/react-meteor-data'
-import Posts from '../api/posts/posts'
+// import Posts from '../api/posts/posts'
+import { Images } from '../api/leaders/leaders'
 
 
 function Post(props) {
@@ -26,10 +27,10 @@ function Post(props) {
     
     function makepost(post) {
       return (
-             <tr key={post._id}>
-              <td>{post.title}</td>
-              <td>{post.content}</td>
-              <td>{post.link}</td>
+             <tr key={post.meta._id}>
+              <td>{post.meta.title}</td>
+              <td>{post.meta.content}</td>
+              <td>{post.meta.link}</td>
             </tr>
     )
   }
@@ -40,6 +41,7 @@ export default PostContainer = withTracker(() => {
   Meteor.subscribe('users')
   Meteor.subscribe('images')
   return {
-    posts: Posts.find().fetch(),
+    // posts: Posts.find().fetch(), // posts were residing in Posts but because of uploads I changed to Images
+    posts: Images.find().fetch(),
   }
 })(Post)
