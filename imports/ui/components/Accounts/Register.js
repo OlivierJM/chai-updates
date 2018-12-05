@@ -43,7 +43,7 @@ function Register(props) {
     return <Redirect to='/' />
   }  
   return (
-    <div className="row">
+    <div className="row flex-center">
       <div className="col s4" />
       <div className="col s4 " style={{ paddingTop: 30, margin: 0 }}>
         <div className="card">
