@@ -31,7 +31,7 @@ const App = () => (
         {/* // account */}
       </Authenticated>
       <Route path="/register" component={Register} />
-      <Route path="/login" component={Login} />
+      <Route  path="/login" component={Login} />
 
     </Fragment>
   </Router>
