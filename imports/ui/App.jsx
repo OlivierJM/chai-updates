@@ -9,6 +9,7 @@ import FileUpload from './dashboard/leads/Upload'
 
 import Register from './components/Accounts/Register'
 import Login from './components/Accounts/Login'
+import Authenticated from './Authenticated'
 
 // prototyping
 // import DashboardMain from './dashboard/DashboardMain'
@@ -21,16 +22,16 @@ import Post from './Post'
 const App = () => (
   <Router>
     <Fragment>
+      <Authenticated>
       <Header />
-
-      <Route exact path="/updates" component={Updates} />
-      <Route path="/post" component={CreatePost} />
-      <Route path="/posts" component={Post} />
-      <Route path="/upload" component={FileUpload} />
-      {/* // account */}
-
+        <Route exact path="/updates" component={Updates} />
+        <Route path="/post" component={CreatePost} />
+        <Route path="/posts" component={Post} />
+        <Route path="/upload" component={FileUpload} />
+        {/* // account */}
+      </Authenticated>
       <Route path="/register" component={Register} />
-      <Route path="/login" component={Login} />
+      <Route  path="/login" component={Login} />
 
     </Fragment>
   </Router>
