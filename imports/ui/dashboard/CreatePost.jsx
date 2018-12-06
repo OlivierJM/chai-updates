@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Meteor } from "meteor/meteor"
-import { Session } from 'meteor/session'
 import UploadImage from './leads/Upload'
 
 function createPost() {
