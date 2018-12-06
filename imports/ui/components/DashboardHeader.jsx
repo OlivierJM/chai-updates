@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const DashboardHeader = () => (
-  <nav className="border">
+  <nav className="border navbar">
     <div className="collapsible">
       <input id="collapsible2" type="checkbox" name="collapsible2" />
       <button>

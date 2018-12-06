@@ -14,7 +14,7 @@ import Authenticated from './Authenticated'
 // prototyping
 // import DashboardMain from './dashboard/DashboardMain'
 import Header from './components/DashboardHeader'
-
+import Footer from './components/Footer'
 import Post from './Post'
 
 
@@ -29,6 +29,7 @@ const App = () => (
         <Route path="/posts" component={Post} />
         <Route path="/upload" component={FileUpload} />
         {/* // account */}
+        <Footer/>
       </Authenticated>
       <Route path="/register" component={Register} />
       <Route  path="/login" component={Login} />

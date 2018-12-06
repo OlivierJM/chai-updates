@@ -2,3 +2,27 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  background-color: #069;
+  color: #fff;
+}
+
+.navbar {
+  background: #069;
+  color: #fff;
+}
+
+.inline li {
+  color: #fff;
+}
+
+.table-hover {
+  margin: 20px auto;
+}
+
+.button {
+  margin-left: 40px;
+}
