@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Updates from './Updates.jsx'
 import CreatePost from './dashboard/CreatePost'
+import CreateLeader from './dashboard/leads/CreateLeader'
 import FileUpload from './dashboard/leads/Upload'
+
 
 // accounts
 
@@ -27,7 +29,7 @@ const App = () => (
         <Route exact path="/updates" component={Updates} />
         <Route path="/post" component={CreatePost} />
         <Route path="/posts" component={Post} />
-        <Route path="/upload" component={FileUpload} />
+        <Route path="/upload" component={CreateLeader} />
         {/* // account */}
       </Authenticated>
       <Route path="/register" component={Register} />

@@ -36,8 +36,9 @@ export class FileUploadComponent extends Component {
               meta: {
                 locator: this.props.fileLocator,
                 userId: Meteor.userId(), // Optional, used to check on server for file tampering
-                department: '',
-                age: '',
+                department: content,
+                name: title,
+                position: link,
                 createdAt: new Date(),
               },
               streams: 'dynamic',

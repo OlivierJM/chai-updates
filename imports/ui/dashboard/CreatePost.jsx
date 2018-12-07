@@ -31,7 +31,7 @@ function createPost() {
   );
 }
 
-function useFormValues(initial) {
+export function useFormValues(initial) {
   const [value, setValue] = useState(initial);
   function handleValueChange(e) {
     setValue(e.target.value);
