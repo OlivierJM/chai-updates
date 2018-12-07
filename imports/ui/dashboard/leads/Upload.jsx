@@ -24,7 +24,7 @@ export class FileUploadComponent extends Component {
   uploadIt = e => {
     e.preventDefault();
     const { files } = this.state;
-    const { match: { path }, title, link, content } = this.props
+    const { match: { path }, title, link, content, type } = this.props
 
     _.each(files, file => {
       let uploadInstance;
@@ -58,6 +58,7 @@ export class FileUploadComponent extends Component {
                   title,
                   content,
                   link,
+                  type,
                   createdAt: new Date(),
                 },
                 streams: 'dynamic',

@@ -26,7 +26,7 @@ function createPost() {
         </select>
       </div>
     </form>
-      <UploadImage title={title.value} content={content.value} link={link.value} />
+      <UploadImage title={title.value} type={type} content={content.value} link={link.value} />
     </>
   );
 }
