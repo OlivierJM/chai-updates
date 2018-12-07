@@ -41,7 +41,7 @@ export default PostContainer = withTracker(() => {
   Meteor.subscribe('users')
   Meteor.subscribe('images')
   return {
-    // posts: Posts.find().fetch(), // posts were residing in Posts but because of uploads I changed to Images
     posts: Images.find().fetch(),
+    // image: Images.findOne({_id: "wXuchx8KtxxFMaR67"}).link()
   }
 })(Post)

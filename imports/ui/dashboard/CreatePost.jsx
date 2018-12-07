@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Meteor } from "meteor/meteor"
-import { Session } from 'meteor/session'
 import UploadImage from './leads/Upload'
 
 function createPost() {
@@ -28,12 +26,12 @@ function createPost() {
         </select>
       </div>
     </form>
-      <UploadImage title={title.value} content={content.value} link={link.value} />
+      <UploadImage title={title.value} type={type} content={content.value} link={link.value} />
     </>
   );
 }
 
-function useFormValues(initial) {
+export function useFormValues(initial) {
   const [value, setValue] = useState(initial);
   function handleValueChange(e) {
     setValue(e.target.value);
