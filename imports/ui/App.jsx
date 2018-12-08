@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Updates from './Updates.jsx'
 import CreatePost from './dashboard/CreatePost'
 import CreateLeader from './dashboard/leads/CreateLeader'
-import FileUpload from './dashboard/leads/Upload'
+import AddNumber from './dashboard/AddNumber'
 
 
 // accounts
@@ -30,6 +30,7 @@ const App = () => (
         <Route path="/post" component={CreatePost} />
         <Route path="/posts" component={Post} />
         <Route path="/upload" component={CreateLeader} />
+        <Route path="/numbers" component={AddNumber} />
         {/* // account */}
       </Authenticated>
       <Route path="/register" component={Register} />

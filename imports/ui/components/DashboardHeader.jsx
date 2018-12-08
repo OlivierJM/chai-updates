@@ -26,6 +26,9 @@ const DashboardHeader = () => (
           <li>
             <Link to="/posts">Posts</Link>
           </li>
+          <li>
+            <Link to="/numbers">Add Number</Link>
+          </li>
         </ul>
       </div>
     </div>
