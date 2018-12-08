@@ -7,7 +7,9 @@ function AddNumber() {
 
   function handleSubmit(e){
       e.preventDefault()
-      console.log(name.value)
+      Meteor.call('addNumber', name.value, numbers.value, err => {
+          err ? console.log(err.reason) : console.log('number was added')
+      })
   }
   return (
     <>
