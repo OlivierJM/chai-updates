@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor'
 import { withRouter, Link } from 'react-router-dom'
 
 function Authenticated({children,location: { pathname }}){
-    console.log(pathname)
     return (
         <div>
             { 
