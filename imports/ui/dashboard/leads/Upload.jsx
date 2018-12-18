@@ -88,7 +88,7 @@ export class FileUploadComponent extends Component {
 
         uploadInstance.on('uploaded', (error, fileObj) => {
           if (error) {
-            Materialize.toast(error.reason, 5000, 'error-toast');
+            console.log(error.reason, 5000, 'error-toast');
           } else {
             console.log(fileObj)
             // Remove the filename from the upload box
@@ -105,7 +105,7 @@ export class FileUploadComponent extends Component {
         });
 
         uploadInstance.on('error', function(error, fileObj) {
-          Materialize.toast(error, 10000, 'error-toast');
+          console.log(error, 10000, 'error-toast');
         });
 
         uploadInstance.on('progress', (progress, fileObj) => {

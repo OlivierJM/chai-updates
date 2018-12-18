@@ -3,9 +3,9 @@ import { useFormValues } from '../CreatePost'
 import UploadImage from './Upload'
 
 function CreateLeader() {
-  const title = useFormValues("title")
-  const content = useFormValues("content")
-  const link = useFormValues("link")
+  const title = useFormValues("Name")
+  const content = useFormValues("Position")
+  const link = useFormValues("Phone Number")
 
   return (
     <>

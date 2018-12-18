@@ -11,7 +11,6 @@ import '../imports/api/leaders/publication'
 import '../imports/api/leaders/methods'
 import '../imports/api/leaders/leaders'
 import '../imports/api/accounts/numbers'
-import '../imports/api/accounts/methods'
 
 const user = {
     username: 'admin',

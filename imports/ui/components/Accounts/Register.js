@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect, withRouter } from 'react-router-dom'
 import { Accounts } from 'meteor/accounts-base'
+// import { Meteor } from 'reac'
 import {useFormInput, useError, validatePassword} from './accountsUtils'
 
 function Register(props) {
