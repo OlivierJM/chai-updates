@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor'
-import { Numbers } from './numbers'
+import { PhoneNumbers } from './numbers'
 
 Meteor.publish('users', () => Meteor.users.find({}))
 
-Meteor.publish('numbers', () => Numbers.find({}))
+Meteor.publish('phoneNumbers', () => PhoneNumbers.find({}))

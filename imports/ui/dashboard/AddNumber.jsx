@@ -6,10 +6,6 @@ function AddNumber() {
   const name = useFormValues("name")
   const number = useFormValues("number")
 
-  useEffect(() => {
-    Meteor.subscribe('numbers')
-  })
-
   function handleSubmit(e) {
     e.preventDefault();
     Meteor.call("addNumber", name.value, number.value, err => {

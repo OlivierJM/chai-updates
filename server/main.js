@@ -10,7 +10,6 @@ import '../imports/api/departments/methods'
 import '../imports/api/leaders/publication'
 import '../imports/api/leaders/methods'
 import '../imports/api/leaders/leaders'
-import '../imports/api/accounts/numbers'
 
 const user = {
     username: 'admin',

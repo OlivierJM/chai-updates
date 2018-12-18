@@ -1,7 +1,7 @@
 import React from 'react'
 import { withTracker } from 'meteor/react-meteor-data'
-// import Posts from '../api/posts/posts'
 import { Images } from '../api/leaders/leaders'
+import { PhoneNumbers } from '../api/accounts/numbers'
 
 
 function Post(props) {
@@ -40,8 +40,9 @@ export default PostContainer = withTracker(() => {
   Meteor.subscribe('posts')
   Meteor.subscribe('users')
   Meteor.subscribe('images')
-  Meteor.subscribe('numbers')
+  Meteor.subscribe('phoneNumbers')
   return {
     posts: Images.find().fetch(),
+    numbers: PhoneNumbers.find().fetch()
   }
 })(Post)

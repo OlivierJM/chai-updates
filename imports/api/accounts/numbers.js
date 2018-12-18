@@ -1,3 +1,3 @@
 import { Mongo } from 'meteor/mongo'
 
-export const Numbers = new Mongo.Collection('numbers', { idGeneration: String })
+export const PhoneNumbers = new Mongo.Collection('phoneNumbers', { idGeneration: String })
