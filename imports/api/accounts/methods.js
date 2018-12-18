@@ -14,6 +14,7 @@ Meteor.methods({
     },
     addUser(user){
         check(user, Object)
-        Accounts.createUser(user)
+        const isUserExist = PhoneNumbers.findOne({number: user.username})
+        isUserExist && Accounts.createUser(user) || console.log("phone number not verified")
     }
 })
