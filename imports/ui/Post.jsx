@@ -27,7 +27,7 @@ function Post(props) {
     
     function makepost(post) {
       return (
-             <tr key={post.meta._id}>
+             <tr key={post._id}>
               <td>{post.meta.title}</td>
               <td>{post.meta.content}</td>
               <td>{post.meta.link}</td>
@@ -40,8 +40,8 @@ export default PostContainer = withTracker(() => {
   Meteor.subscribe('posts')
   Meteor.subscribe('users')
   Meteor.subscribe('images')
+  Meteor.subscribe('numbers')
   return {
     posts: Images.find().fetch(),
-    // image: Images.findOne({_id: "wXuchx8KtxxFMaR67"}).link()
   }
 })(Post)
