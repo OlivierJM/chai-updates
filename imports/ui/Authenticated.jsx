@@ -1,18 +1,17 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Meteor } from 'meteor/meteor'
 import { withRouter, Link } from 'react-router-dom'
 
 function Authenticated({children,location: { pathname }}){
-    console.log(pathname)
     return (
-        <div>
+        <Fragment>
             { 
                 Meteor.userId() ? children 
                 : pathname === '/login'
                 ? null
                 : <LoginSection /> 
             }
-        </div>
+        </Fragment>
     ) 
 }
 function LoginSection(){

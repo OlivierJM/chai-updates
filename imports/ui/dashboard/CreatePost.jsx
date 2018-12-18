@@ -15,9 +15,10 @@ function createPost() {
     <form>
       <input {...title} />
       <br />
-      <input {...content} />
+      <textarea {...content} />
       <br />
       <input {...link} />
+
       <br />
       <div className="form-group">
         <select id="paperSelects1" defaultValue={type} onChange={handleChange}>
