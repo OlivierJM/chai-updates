@@ -33,7 +33,10 @@ function Post(props) {
   }
 
   function handleSaveChanges(){
-    console.log(_post)
+    const {id, title, content } = _post
+    Meteor.call('editImage', id, title, content, err => {
+      err ? console.log(err.reason) : console.log("edited the post")
+    })
   }
   return (
     <div>
