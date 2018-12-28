@@ -1,83 +1,42 @@
 import React, { useState } from "react";
-import { Link, Redirect } from 'react-router-dom'
-import { Meteor } from 'meteor/meteor'
-import { useFormInput, useError } from './accountsUtils'
-
+import { Redirect } from "react-router-dom";
+import { Meteor } from "meteor/meteor";
+import { InputGroup, InputGroupAddon, Button, Input } from "reactstrap";
+import { useFormInput, useError } from "./accountsUtils";
 
 function Login() {
-    const email = useFormInput('')
-    const password = useFormInput('')
-    const {error, setError} = useError('')
-    const [isAuth, setAuth] = useState(false)
-    // log the user in 
-    function handleLogin(e){
-        e.preventDefault()
-        Meteor.loginWithPassword(email.value, password.value, err => {
-          err ? setError(err.reason) : setAuth(true)
-        })
-        
-    }
-    // 
-  if(isAuth){
-    return <Redirect to='/post' />
-  }  
+  const email = useFormInput("");
+  const password = useFormInput("");
+  const { error, setError } = useError("");
+  const [isAuth, setAuth] = useState(false);
+  // log the user in
+  function handleLogin(e) {
+    e.preventDefault();
+    Meteor.loginWithPassword(email.value, password.value, err => {
+      err ? setError(err.reason) : setAuth(true);
+    });
+  }
+  //
+  if (isAuth) {
+    return <Redirect to="/post" />;
+  }
   return (
-    <div className="row flex-center">
-      <div className="col s4" />
-      <div className="col s4 " style={{ paddingTop: 30, margin: 0 }}>
-        <div className="card">
-          <div className="row">
-            <div className="col s12 flex-center"> LOGIN</div>
-            <form className="col s12" onSubmit={handleLogin}>
-              <div className="row">
-                <div className="input-field col s10" style={{ marginLeft: 15 }}>
-                  <input
-                    id="email"
-                    type="text"
-                    className="validate"
-                    {...email}
-                    required
-                  />
-                  <label htmlFor="email">Email</label>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="input-field col s10 " style={{ marginLeft: 15 }}>
-                  <input
-                    id="password"
-                    type="password"
-                    className="validate"
-                    {...password}
-                    required
-                  />
-                  <label htmlFor="password">Password</label>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="input-field col s12 center">
-                  <button className="waves-effect  waves-light btn">
-                    Login
-                  </button>
-                </div>
-              </div>
-              <div className='center row'>
-                <Link to='/register'>Register</Link>
-              </div>
-              <div className='center row'>
-                <p className='red-text'>
-                    {
-                      error.length ? error : null 
-                    }
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form onSubmit={handleLogin}>
+      <InputGroup>
+        <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+        <Input placeholder="username" {...email} required />
+      </InputGroup>
+      <br />
+      <InputGroup>
+        <InputGroupAddon addonType="prepend">&#128274;</InputGroupAddon>
+        <Input placeholder="password" type='password' {...password} required />
+      </InputGroup>
+      <br />
+      <Button color="primary" role="submit">
+        submit
+      </Button>
+    </form>
   );
 }
 
-export default Login
+export default Login;
