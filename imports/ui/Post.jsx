@@ -7,34 +7,22 @@ import { PhoneNumbers } from '../api/accounts/numbers'
 
 function Post(props) {
   const [isOpen, setModal] = useState(false)
-  const [post, setPost] = useState(null)
-  function toggle(e, id){
+  const [_post, setPost] = useState({})
+  function toggle(e, id, title, content){
     setModal(!isOpen)
-    setPost(id)
+    setPost({
+      id,
+      title,
+      content
+    })
   }
-
-  function makepost(post) {
-    return (
-           <tr key={post._id}>
-            <td>{post.meta.title}</td>
-            <td>{post.meta.content}</td>
-            <td>{post.meta.link}</td>
-            <td>
-              <Button color="info" onClick={e => toggle(e, post._id)}>{isOpen ? 'close' : 'open'}</Button>
-            </td>
-          </tr>
-  )
-}
-    const posts = props.posts.map(
-      post => makepost(post)
-    )
 
     return (
       <div>
           <Modal isOpen={isOpen} toggle={toggle} className={''}>
           <ModalHeader toggle={toggle}>Modal title</ModalHeader>
           <ModalBody>
-            {post}
+            {_post.title}
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
@@ -51,7 +39,19 @@ function Post(props) {
             </tr>
           </thead>
           <tbody>
-              { posts }
+              { 
+                props.posts && props.posts.map(post => (
+                  (
+                    <tr key={post._id}>
+                     <td>{post.meta.title}</td>
+                     <td>{post.meta.content}</td>
+                     <td>{post.meta.link}</td>
+                     <td>
+                       <Button color="info" onClick={e => toggle(e, post._id, post.meta.title, post.meta.content)}>{isOpen ? 'close' : 'open'}</Button>
+                     </td>
+                   </tr>
+                )))
+               }
           </tbody>
         </Table>
       </div>
