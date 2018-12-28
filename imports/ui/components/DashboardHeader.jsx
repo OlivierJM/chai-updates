@@ -33,7 +33,7 @@ const DashboardHeader = () => {
             <Link to="/updates">Updates</Link>
           </NavItem>
           <NavItem>
-            <Link to="/upload">Upload</Link>
+            <Link to="/upload">Leaders</Link>
           </NavItem>
           <NavItem>
             <Link to="/posts">Posts</Link>
