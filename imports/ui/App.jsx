@@ -26,6 +26,7 @@ const App = () => (
     <Fragment>
       <Authenticated>
       <Header />
+      <br />
         <Route exact path="/updates" component={Updates} />
         <Route path="/post" component={CreatePost} />
         <Route path="/posts" component={Post} />
