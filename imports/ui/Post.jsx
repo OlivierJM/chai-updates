@@ -19,6 +19,7 @@ function Post(props) {
 
     return (
       <div>
+        <h4 className='text-center'>All Posts</h4>
           <Modal isOpen={isOpen} toggle={toggle} className={''}>
           <ModalHeader toggle={toggle}>Modal title</ModalHeader>
           <ModalBody>
