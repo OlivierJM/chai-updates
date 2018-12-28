@@ -10,6 +10,8 @@ import {
 } from "reactstrap";
 import { useFormValues } from "./CreatePost";
 
+
+// todo: clean the when successful
 function AddNumber() {
   const name = useFormValues("");
   const number = useFormValues("");
