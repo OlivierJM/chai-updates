@@ -18,6 +18,7 @@ import Authenticated from './Authenticated'
 import Header from './components/DashboardHeader'
 
 import Post from './Post'
+import Home from './Home'
 
 
 
@@ -27,6 +28,7 @@ const App = () => (
       <Authenticated>
       <Header />
       <br />
+        <Route exact path='/' component={Home} />
         <Route exact path="/updates" component={Updates} />
         <Route path="/post" component={CreatePost} />
         <Route path="/posts" component={Post} />
