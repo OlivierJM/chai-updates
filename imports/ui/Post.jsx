@@ -35,7 +35,7 @@ function Post(props) {
   function handleSaveChanges(){
     const {id, title, content } = _post
     Meteor.call('editImage', id, title, content, err => {
-      err ? console.log(err.reason) : console.log("edited the post")
+      err ? console.log(err.reason) : setModal(!isOpen);
     })
   }
   return (
