@@ -18,7 +18,11 @@ const DashboardHeader = () => {
 
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand href="/">Chai Updates</NavbarBrand>
+      <h4>
+        <Link to='/'>
+          Chai Updates
+        </Link>
+      </h4>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
