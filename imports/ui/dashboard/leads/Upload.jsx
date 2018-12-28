@@ -2,6 +2,8 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import { InputGroup, Button, Input, Row, Col, InputGroupAddon } from "reactstrap";
+
 import _ from 'underscore'
 import { Leaders, Images } from '../../../api/leaders/leaders'
 
@@ -158,25 +160,26 @@ export class FileUploadComponent extends Component {
           <div className="col s12">
             <form onSubmit={this.uploadIt}>
               <div className="file-field input-field">
-                <div className="btn">
-                  <span>
-                    {files.length >= 1
-                      ? `${files.length} ${name} selected (${files_size})`
-                      : 'Pick Files'}
-                  </span>
-                  <input
+                <Button color='default'>
+                <InputGroup>
+                <span>
+                  {files.length >= 1
+                    ? `${files.length} ${name} selected (${files_size})`
+                    : 'Pick Files'}
+                </span>
+                  <Input  
                     type="file"
                     id="myFile"
                     name="file[]"
                     ref="fileinput"
                     multiple
-                    onChange={this.getFiles}
-                  />
-                </div>
+                    onChange={this.getFiles} />
+                </InputGroup>
+                </Button>
               </div>
-              <button role="submit" className="btn fa fa-upload" >
+              <Button color="primary" role="submit">
                 {uploaded ? ' Done Uploading' : ' Upload'}
-              </button>
+              </Button>
             </form>
           </div>
         </div>
