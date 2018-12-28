@@ -4,10 +4,8 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink
 } from "reactstrap";
 
 const DashboardHeader = () => {
@@ -18,7 +16,11 @@ const DashboardHeader = () => {
 
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand href="/">Chai Updates</NavbarBrand>
+      <h4>
+        <Link to='/'>
+          Chai Updates
+        </Link>
+      </h4>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
@@ -29,7 +31,7 @@ const DashboardHeader = () => {
             <Link to="/updates">Updates</Link>
           </NavItem>
           <NavItem>
-            <Link to="/upload">Upload</Link>
+            <Link to="/upload">Leaders</Link>
           </NavItem>
           <NavItem>
             <Link to="/posts">Posts</Link>
