@@ -23,6 +23,7 @@ function Login() {
   return (
     <Row>
       <Col sm="12" md={{ size: 6, offset: 3 }}>
+        <h5 className='text-center'>Login</h5>
         <form onSubmit={handleLogin}>
           <InputGroup>
             <InputGroupAddon addonType="prepend">@</InputGroupAddon>
