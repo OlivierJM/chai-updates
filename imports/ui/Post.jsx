@@ -1,4 +1,5 @@
 import React from 'react'
+import { Table } from 'reactstrap';
 import { withTracker } from 'meteor/react-meteor-data'
 import { Images } from '../api/leaders/leaders'
 import { PhoneNumbers } from '../api/accounts/numbers'
@@ -10,18 +11,19 @@ function Post(props) {
     )
     return (
       <div>
-        <table className='table-hover'>
+        <Table hover>
           <thead>
             <tr>
               <th>Title</th>
               <th>Content</th>
               <th>Link</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
               { posts }
           </tbody>
-        </table>
+        </Table>
       </div>
     )
     
@@ -31,6 +33,7 @@ function Post(props) {
               <td>{post.meta.title}</td>
               <td>{post.meta.content}</td>
               <td>{post.meta.link}</td>
+              <td>{'Edit'}</td>
             </tr>
     )
   }

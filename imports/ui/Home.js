@@ -24,9 +24,9 @@ const Home = () => {
       <Container fluid>
         <Row>
           <Col sm={{ size: 8, offset: 2 }}>
-            <h4 className='text-center'>
+            <p className='text-center'>
               Download and Install our mobile app for real time updates
-            </h4>
+            </p>
             <hr/>
           </Col>
         </Row>
