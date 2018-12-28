@@ -1,16 +1,46 @@
-import React from 'react'
-import { Table } from 'reactstrap';
+import React, { useState } from 'react'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap';
 import { withTracker } from 'meteor/react-meteor-data'
 import { Images } from '../api/leaders/leaders'
 import { PhoneNumbers } from '../api/accounts/numbers'
 
 
 function Post(props) {
+  const [isOpen, setModal] = useState(false)
+  const [post, setPost] = useState(null)
+  function toggle(e, id){
+    setModal(!isOpen)
+    setPost(id)
+  }
+
+  function makepost(post) {
+    return (
+           <tr key={post._id}>
+            <td>{post.meta.title}</td>
+            <td>{post.meta.content}</td>
+            <td>{post.meta.link}</td>
+            <td>
+              <Button color="info" onClick={e => toggle(e, post._id)}>{isOpen ? 'close' : 'open'}</Button>
+            </td>
+          </tr>
+  )
+}
     const posts = props.posts.map(
       post => makepost(post)
     )
+
     return (
       <div>
+          <Modal isOpen={isOpen} toggle={toggle} className={''}>
+          <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+          <ModalBody>
+            {post}
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
+            <Button color="secondary" onClick={toggle}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
         <Table hover>
           <thead>
             <tr>
@@ -27,16 +57,6 @@ function Post(props) {
       </div>
     )
     
-    function makepost(post) {
-      return (
-             <tr key={post._id}>
-              <td>{post.meta.title}</td>
-              <td>{post.meta.content}</td>
-              <td>{post.meta.link}</td>
-              <td>{'Edit'}</td>
-            </tr>
-    )
-  }
 }
 
 export default PostContainer = withTracker(() => {
