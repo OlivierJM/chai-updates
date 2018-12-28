@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor'
 import { check } from 'meteor/check'
-import Leaders from './leaders'
+import {Leaders, Images} from './leaders'
+
 
 
 /**
@@ -29,5 +30,19 @@ import Leaders from './leaders'
      removeLeader(_id){
          check(_id, String)
          Leaders.remove({_id})
-     }
+     },
+     editImage(id, title, content) {
+        check(id, String);
+        check(title, String);
+        check(content, String);
+        Images.update(
+          { _id: id },
+          {
+            $set: {
+              'meta.title': title,
+              'meta.content': content
+            }
+          }
+        );
+      }
  })
