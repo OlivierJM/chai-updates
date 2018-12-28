@@ -1,38 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
 
-const DashboardHeader = () => (
-  <nav className="border">
-    <div className="collapsible">
-      <input id="collapsible2" type="checkbox" name="collapsible2" />
-      <button>
-        <label htmlFor="collapsible2">
-          <div className="bar1" />
-          <div className="bar2" />
-          <div className="bar3" />
-        </label>
-      </button>
-      <div className="collapsible-body">
-        <ul className="inline">
-          <li>
+const DashboardHeader = () => {
+  const [isOpen, setOpen] = useState(false);
+  function toggle() {
+    setOpen(!isOpen);
+  }
+
+  return (
+    <Navbar color="light" light expand="md">
+      <NavbarBrand href="/">Chai Updates</NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="ml-auto" navbar>
+          <NavItem >
             <Link to="/post">Create Post</Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/updates">Updates</Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/upload">Upload</Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/posts">Posts</Link>
-          </li>
-          <li>
+          </NavItem>
+          <NavItem>
             <Link to="/numbers">Add Number</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-);
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
+  );
+};
 
 export default DashboardHeader;
