@@ -69,4 +69,16 @@ export function useFormValues(initial) {
   };
 }
 
+/**
+ * @param {String} initialError
+ * @returns {Object} error, setError
+ */
+export function useError(initialError){
+  const [error, setError] = useState(initialError)
+  return {
+      error,
+      setError
+  }
+}
+
 export default createPost;
