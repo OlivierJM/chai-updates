@@ -61,9 +61,11 @@ export function useFormValues(initial) {
   function handleValueChange(e) {
     setValue(e.target.value);
   }
+
   return {
     value,
-    onChange: handleValueChange
+    onChange: handleValueChange,
+    clearInput: () => setValue(initial),
   };
 }
 
