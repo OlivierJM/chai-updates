@@ -22,17 +22,17 @@ function CreateLeader() {
         <form>
           <InputGroup>
             <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
-            <Input placeholder="Title" {...title} required />
+            <Input placeholder="Title" value={title.value} onChange={title.onChange} required />
           </InputGroup>
           <br />
           <InputGroup>
             <InputGroupAddon addonType="prepend">Title</InputGroupAddon>
-            <Input placeholder="Position" {...position} required />
+            <Input placeholder="Position" value={position.value} onChange={position.onChange} required />
           </InputGroup>
           <br />
           <InputGroup>
             <InputGroupAddon addonType="prepend">Number</InputGroupAddon>
-            <Input placeholder="Phone Number" {...link} required />
+            <Input placeholder="Phone Number" value={link.value} onChange={link.onChange} required />
           </InputGroup>
           <br />
         </form>
