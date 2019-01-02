@@ -10,16 +10,10 @@ if (Meteor.isServer) {
 }
 
 const validTypes = ['png', 'jpg', 'jpeg'];
-// export const Leaders = new FilesCollection({
-//     collectionName: 'leaders',
-//     storagePath: 'public/uploads/leaders',
-//  })
-// export const Images = new FilesCollection({
-//     collectionName: 'images',
-//     storagePath: 'public/uploads/images',
-//  })
+
 export const Leaders = new FilesCollection({
   collectionName: 'leaders',
+  storagePath: 'public/uploads/images',
   allowClientCode: true, // Disallow remove files from Client
   onBeforeUpload(file) {
     // Allow upload files under 2mb, and only in png/jpg/jpeg formats
