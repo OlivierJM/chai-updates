@@ -13,9 +13,9 @@ const Home = () => {
         <Container fluid>
           <Row>
             <Col sm={{ size: 10, offset: 1}}>
-              <h1 className="display-4">Chai Updates</h1>
+              <h1 className="display-4">Chainama </h1>
               <p className="lead my-3">
-                Welcome To Chai Updates
+                Welcome To Chainama Adventist Church Dashboard
               </p>
             </Col>
           </Row>
