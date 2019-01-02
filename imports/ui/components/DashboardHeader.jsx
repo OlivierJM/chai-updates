@@ -18,7 +18,7 @@ const DashboardHeader = () => {
     <Navbar color="light" light expand="md">
       <h4>
         <Link to='/'>
-          Chai Updates
+          Chainama
         </Link>
       </h4>
       <NavbarToggler onClick={toggle} />

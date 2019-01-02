@@ -18,13 +18,14 @@ function createPost() {
         <form>
           <InputGroup>
             <InputGroupAddon addonType="prepend">Title</InputGroupAddon>
-            <Input {...title} placeholder="The title goes here" />
+            <Input value={title.value} onChange={title.onChange} placeholder="The title goes here" />
           </InputGroup>
           <br />
           <InputGroup>
             <InputGroupAddon addonType="prepend">Text</InputGroupAddon>
             <textarea
-              {...content}
+              value={content.value} 
+              onChange={content.onChange}
               rows={4}
               cols={50}
               placeholder="write your post content here"
@@ -33,7 +34,7 @@ function createPost() {
           <br />
           <InputGroup>
             <InputGroupAddon addonType="prepend">Link</InputGroupAddon>
-            <Input {...link} placeholder="The Video or Image goes here" />
+            <Input value={link.value} onChange={link.onChange} placeholder="The Video or Image goes here" />
           </InputGroup>
           <br />
           <InputGroup>
@@ -61,10 +62,24 @@ export function useFormValues(initial) {
   function handleValueChange(e) {
     setValue(e.target.value);
   }
+
   return {
     value,
-    onChange: handleValueChange
+    onChange: handleValueChange,
+    clearInput: () => setValue(initial),
   };
+}
+
+/**
+ * @param {String} initialError
+ * @returns {Object} error, setError
+ */
+export function useError(initialError){
+  const [error, setError] = useState(initialError)
+  return {
+      error,
+      setError
+  }
 }
 
 export default createPost;
