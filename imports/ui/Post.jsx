@@ -38,6 +38,11 @@ function Post(props) {
       err ? console.log(err.reason) : setModal(!isOpen);
     })
   }
+  function deletePost(){
+    Meteor.call('deletePost', _post.id, err => {
+      err ? console.log(err.reason) : setModal(!isOpen);
+    })
+  }
   return (
     <div>
       <h4 className="text-center">All Posts</h4>
@@ -53,6 +58,9 @@ function Post(props) {
           </InputGroup>
         </ModalBody>
         <ModalFooter>
+          <Button color="danger" onClick={deletePost}>
+            {'Delete'}
+          </Button>{"   "}
           <Button color="primary" onClick={handleSaveChanges}>
             {'Save'}
           </Button>{" "}

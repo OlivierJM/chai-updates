@@ -45,5 +45,9 @@ Meteor.methods({
         }
       }
     );
+  },
+  deletePost(id){
+    check(id, String)
+    Images.remove({_id: id})
   }
 });
