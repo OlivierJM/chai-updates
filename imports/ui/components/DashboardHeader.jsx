@@ -28,7 +28,7 @@ const DashboardHeader = () => {
             <Link to="/post">Create Post</Link>
           </NavItem>
           <NavItem>
-            <Link to="/updates">Updates</Link>
+            <Link to="/users">Members</Link>
           </NavItem>
           <NavItem>
             <Link to="/upload">Leaders</Link>
