@@ -49,7 +49,7 @@ function Post(props) {
           </InputGroup>
           <br />
           <InputGroup>
-            <Input placeholder="Content" defaultValue={_post.content} onChange={updatePostContent} required />
+            <Input placeholder="Content" type='textarea' defaultValue={_post.content} onChange={updatePostContent} required />
           </InputGroup>
         </ModalBody>
         <ModalFooter>
