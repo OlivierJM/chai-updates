@@ -1,15 +1,13 @@
 import React, { Fragment } from 'react'
 import { Meteor } from 'meteor/meteor'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 
 function Authenticated({children,location: { pathname }}){
     return (
         <Fragment>
             { 
                 Meteor.userId() ? children 
-                : pathname === '/login'
-                ? null
-                : <LoginSection /> 
+                : <Redirect to='/login'/>
             }
         </Fragment>
     ) 

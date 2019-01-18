@@ -13,7 +13,7 @@ import '../imports/api/leaders/leaders'
 
 const user = {
     username: 'admin',
-    password: 'chainama',
+    password: 'chai',
     profile: { name: 'communication' }
 }
 Meteor.startup(() => {
